@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlConversor" header="Conversor Grados Centigrados-Farenheit">
+            <h:form id="conversorForm">
+                <p:panelGrid id="pnlConversorIngreso" columns="2">
+                    <p:outputLabel id="lblIngreso" value="Ingrese Grados Centigrados"/>
+                    <p:inputText id="txtGrados" value="#{conversorManagedBean.a}"/>
+                    <p:outputLabel/>
+                    <p:commandButton id="btnConversion" value="Convertir" actionListener="#{conversorManagedBean.convertir()}" update="lblGF"/>
+                    <p:outputLabel id="lblResultado" value="Resultado:"/>
+                    <p:outputLabel id="lblGF" value="#{conversorManagedBean.gradosF}"/>
+                </p:panelGrid>
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
+
