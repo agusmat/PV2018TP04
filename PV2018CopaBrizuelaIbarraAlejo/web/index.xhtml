@@ -62,6 +62,12 @@
                 <p:commandButton id="btnDividir" actionListener="#{calculadoraManagedBean.registrarValorBoton()}" value="/" update="txtMantisa">
                     <f:param name="valorPresionado" value="/"/>
                 </p:commandButton>
+                 <p:outputLabel/>
+                <p:outputLabel/>
+                <p:outputLabel/>
+                <p:commandButton id="btnPotenciar" actionListener="#{calculadoraManagedBean.registrarValorBoton()}" value="^" update="txtMantisa">
+                    <f:param name="valorPresionado" value="^"/>
+                </p:commandButton>
             </p:panelGrid>
         </h:form>
     </h:body>

@@ -31,4 +31,8 @@ public class Calculadora implements Serializable {
     public int multiplicar(int a, int b) {
         return a * b;
     }
+    
+    public int potenciar(int a, int b){
+        return (int) Math.pow(a, b);
+    }
 }

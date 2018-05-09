@@ -36,7 +36,7 @@ public class CalculadoraManagedBean implements Serializable {
         char operadorSeleccionado = ' ';
         for (int i = 0; i < getMantisa().length(); i++) {
             char caracterExtraido = getMantisa().charAt(i);
-            if (caracterExtraido == '+' || (caracterExtraido == '-' && i != 0) || caracterExtraido == '*' || caracterExtraido == '/') {
+            if (caracterExtraido == '+' || (caracterExtraido == '-' && i != 0) || caracterExtraido == '*' || caracterExtraido == '/' || caracterExtraido=='^') {
                 primerNumero = Integer.parseInt(getMantisa().substring(0, i));
                 segundoNumero = Integer.parseInt(getMantisa().substring(i + 1));
                 operadorSeleccionado = caracterExtraido;
@@ -59,6 +59,10 @@ public class CalculadoraManagedBean implements Serializable {
             }
             case '*': {
                 resultadoOperacion = getCalculadora().multiplicar(primerNumero, segundoNumero);
+                break;
+            }
+            case '^':{
+                resultadoOperacion=getCalculadora().potenciar(primerNumero, segundoNumero);
                 break;
             }
         }
