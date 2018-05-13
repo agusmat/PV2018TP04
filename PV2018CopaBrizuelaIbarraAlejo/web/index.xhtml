@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlLibro" header="Software de administracion de libros">
+            <h:form id="frmBotones">
+                <p:commandButton id="btnAgregar" oncomplete="PF('agregarLibro').show()" update=":frmAgregarLibro" value="Agregar"/>
+            </h:form>
+        </p:panel>
+        <p:dialog id="dlgAgregarLibro" widgetVar="agregarLibro" header="Agregar Libros" resizable="false" showEffect="explode" hideEffect="explode" modal="true">
+            <h:form id="frmAgregarLibro">
+                <h:panelGrid id="tblLibro" columns="2">
+                    <p:outputLabel id="lblAutor" value="Ingrese autor de libro"/>
+                    <p:selectOneMenu id="autor" value="#{newJSFManagedBean.autor}" converter="omnifaces.SelectItemsConverter">
+                        <f:selectItems value="#{newJSFManagedBean.listaAutor.listadoAutor}" var="a" itemLabel="#{a.apellido}" itemValue="#{a}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel id="lblTitulo" value="Ingrese titulo de libro"/>
+                    <p:inputText id="txtTitulo" value="#{newJSFManagedBean.titulo}"/>
+                    <p:outputLabel id="lblPrecio" value="Ingrese precio de libro"/>
+                    <p:inputText id="txtPrecio" value="#{newJSFManagedBean.precio}"/>
+                    <p:outputLabel id="lblIsbn" value="Ingrese isbn de libro"/>
+                    <p:inputText id="txtIsbn" value="#{newJSFManagedBean.isbn}"/>
+                    <p:commandButton id="btnLibro" oncomplete="PF('agregarLibro').hide()" value="Agregar Libro" actionListener="#{newJSFManagedBean.crearLibro()}" update=":frmTblMuestraLibros">
+                        <p:confirm header="Pedido de Confirmacion" message="¿Confirma Creacion de Libro?" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton id="btnCerrarLibro" value="Salir" oncomplete="PF('agregarLibro').hide()"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+        <p:confirmDialog id="confirmacionDialogoLibro" global="true" showEffect="fade" hideEffect="fade">
+            <h:form id="frmConfirmacionAgregarLibro">
+                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" style="float: right;"/>
+            </h:form>
+        </p:confirmDialog>
+        <p:panel id="pnlTblMuestraLibros" header="Libros Ingresados">
+            <h:form id="frmTblMuestraLibros">
+                <h:panelGrid id="TblMuestraLibros" columns="4">
+                    <p:dataTable id="dtTblMuestraLibros" value="#{newJSFManagedBean.listaLibros.listadoLibros}" var="cadLibro" emptyMessage="No hay libros cargados">
+                        <p:column headerText="Titulo Libro">
+                            <p:outputLabel value="#{cadLibro.titulo}"/>
+                        </p:column>
+                        <p:column headerText="Autor">
+                            <p:outputLabel value="#{cadLibro.autor}"/>
+                        </p:column>
+                        <p:column headerText="Precio">
+                            <p:outputLabel value="#{cadLibro.precio}"/>
+                        </p:column>
+                        <p:column headerText="ISBN">
+                            <p:outputLabel value="#{cadLibro.isbn}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:panelGrid>
+            </h:form>
+        </p:panel>
+
+    </h:body>
+</html>
