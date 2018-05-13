@@ -17,6 +17,7 @@ public class Ahorcado implements Serializable {
     private String palabraAdivinar;
     private int intentos;
     private char[] palabraAhorcado;
+    private String imagen;
 
     public Ahorcado() {
         palabraAdivinar=new String();
@@ -49,6 +50,25 @@ public class Ahorcado implements Serializable {
         }
         if(encontrado==false){
             setIntentos(getIntentos()-1);
+            switch (getIntentos()){
+                case 4:
+                        setImagen("/images/ahorcado 1.png");
+                        break;
+                case 3:
+                        setImagen("/images/ahorcado 2.png");
+                        break;
+                case 2:
+                        setImagen("/images/ahorcado 3.png");
+                        break;
+                case 1:
+                        setImagen("/images/ahorcado 4.png");
+                        break;
+                case 0:
+                        setImagen("/images/ahorcado 5.png");
+                        break;
+    
+                
+            } 
         }
         return encontrado;//agregar imagen
     }
@@ -102,6 +122,20 @@ public class Ahorcado implements Serializable {
      */
     public void setPalabraAhorcado(char[] palabraAhorcado) {
         this.palabraAhorcado = palabraAhorcado;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
     
 }

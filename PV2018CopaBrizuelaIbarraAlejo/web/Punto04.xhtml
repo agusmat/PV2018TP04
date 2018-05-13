@@ -30,7 +30,8 @@
                                    
                 </p:panelGrid>
                 <p:panelGrid id="pnlGrafico" columns="1">
-                    <p:commandButton value="Nuevo Juego" update="frmAhorcado" actionListener="#{juegoFormBean.nuevoJuego()}" disabled="#{juegoFormBean.componenteDeshabilitador eq false}"/>
+                    <p:commandButton value="Nuevo Juego" update="frmAhorcado" actionListener="#{juegoFormBean.nuevoJuego()}" disabled="#{juegoFormBean.componenteDeshabilitador eq false}" />
+                    <p:graphicImage id="grpAhorcado" value="#{juegoFormBean.ahorcado.imagen}"/>
                 </p:panelGrid>
             </h:form>
         </p:panel>
